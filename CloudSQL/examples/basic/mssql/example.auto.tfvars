@@ -1,0 +1,10 @@
+db_name             = "mssql-test"
+db_version          = "SQLSERVER_2017_STANDARD"
+project_id          = "terratest-modules127c1f2e744f8"
+zone                = "us-east4-a"
+region              = "us-east4"
+db_tier             = "db-custom-1-3840"
+disk_size           = 20
+shared_vpc_id       = "projects/host-networking51299c9b7bc30c5/global/networks/nonprod-shared-trust"
+allocated_ip_range  = "private-ip-alloc-10116800-20"
+deletion_protection = false

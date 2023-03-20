@@ -1,0 +1,43 @@
+@startwbs diagram
+
+<style>
+wbsDiagram {
+    Linecolor black
+  .yellowbg {
+      BackgroundColor yellow
+  }
+  .bluebg {
+      BackgroundColor SkyBlue
+  }
+}
+</style>
+
+*:<&globe> dnb.com
+<i>organization</i>; <<bluebg>>
+**:<&folder> shared-services
+<i>folder</i>; <<bluebg>>
+***:<&project> prd-ss-central-logging 
+<i>Project</i>; <<bluebg>>
+****:<&bookmark> org-audit-logs-topic
+<u><i>IAM role for sink service account</i></u>
+<i>Pub/Sub Topic</i>;
+*****:<&book> org-audit-logs-sub
+<i>Pub/Sub Subscription</i>;
+******:cribl-stream@prd-ss-central-logging.iam.gserviceaccount.com
+<i>Service account with access keys</i>;
+*******[#LightGreen]:Cribl Stream
+<i>Observability pipeline</i>;
+********[#LightGreen]:Splunk
+<i>Data analytics</i>;
+**:<&aperture> org-audit-logs-sink
+<u><i>Sink service account</i></u>
+<i>Logs router sink <org level></i>;
+
+
+legend
+|<#SkyBlue> GCP Project structure |
+|<#Business> GCP Resources |
+|<#LightGreen> External services |
+end legend
+
+@endwbs

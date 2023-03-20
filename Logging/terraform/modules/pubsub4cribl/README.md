@@ -1,0 +1,1 @@
+# Module with common resources

@@ -1,0 +1,32 @@
+[
+    {
+      "description": "Full Studentor ID",
+      "mode": "NULLABLE",
+      "name": "FullStudentId",
+      "type": "STRING"
+    },
+    {
+      "description": "Student number",
+      "mode": "NULLABLE",
+      "name": "StudentNumber",
+      "type": "INTEGER"
+    },
+    {
+      "description": "Student ID",
+      "mode": "NULLABLE",
+      "name": "StudentId",
+      "type": "INTEGER"
+    },
+    {
+      "description": "Student Start Time",
+      "mode": "NULLABLE",
+      "name": "StudentStartTime",
+      "type": "INTEGER"
+    },
+    {
+      "description": "Full Date of Student",
+      "mode": "NULLABLE",
+      "name": "fullDate",
+      "type": "DATE"
+    }
+]

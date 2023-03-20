@@ -1,0 +1,20 @@
+# run
+
+module "dnb_gcp_cloud_function_provision_httpfunc" {
+  source  = "app.terraform.io/dnb-core/dnb_gcp_cloud_function/google//modules/provision_httpfunc"
+  version = "2.0.0"
+   ingress_settings = "ALLOW_INTERNAL_ONLY"
+   vpc_connector_egress_settings = "PRIVATE_RANGES_ONLY"
+   runtime = "python37"
+  available_memory_mb   = 128
+  source_archive_bucket = "${var.project_id}-function"
+  source_archive_object = "main.zip"
+  function-description = "create-splunk-index"
+  region = var.region
+  project_id = var.project_id
+  timeout = 540
+  function-name = "create-splunk-index"
+  account_id = "create-spl-idx"
+  entry_point           = "check_index_fun"
+  #service_account_email = "sre-http-cf-sa@dnb-central-logging1a0e2877b7f.iam.gserviceaccount.com"
+}
