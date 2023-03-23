@@ -68,6 +68,14 @@ module "kms_iam" {
 }
 ```
 
+### Key Import
+
+Importing external keys is possible with KMS, but not with Terraform. For importing external keys, you can follow the steps enlisted in this [guide](https://cloud.google.com/kms/docs/importing-a-key).
+   
+It is not possible to do imports directly via Terraform because there are multiple steps involving encrypting the key before sending it to Cloud KMS, and performing all those steps within terraform opens the door for accidentally leaking [senstive data](https://developer.hashicorp.com/terraform/language/state/sensitive-data) to logs or other insecure sources. 
+
+It is recommended that you use `gcloud` to import the keys as it automates wrapping of the key before importing it. You can also build automation using client libaries or REST API, but you should ensure that any logs from that automation are not exposed to anyone to prevent accidentally leaking the external key. Access to that API should also be controlled.  
+
 ### Required Providers
 
 The template repo contains a few required providers for the module repo, which specify module version ranges in the `./versions.tf` file. Versions will be updated and maintained by Dependabot. If unneeded for the given module, remove from the `./versions.tf` file in order to prevent unnecessary provider downloads during `terraform init`

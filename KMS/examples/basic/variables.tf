@@ -35,7 +35,7 @@ variable "asymmetric_keys" {
 # key purpose ENCRYPT_DECRYPT only works with the algorithm GOOGLE_SYMMETRIC_ENCRYPTION
 # the possible value for protection level can be either SOFTWARE or HSM
 variable "symmetric_keys_auto_rotate" {
-    description = "Map of attributes involved in creation of symmetric keys with automatic rotation enabled"
+  description = "Map of attributes involved in creation of symmetric keys with automatic rotation enabled"
   type = map(object({
     symmetric_key_name             = string
     symmetric_key_protection_level = string
@@ -48,7 +48,7 @@ variable "symmetric_keys_auto_rotate" {
 # see this link for algorithms supported by each key purpose: https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm
 # the possible value for protection level can be either SOFTWARE or HSM
 variable "symmetric_keys" {
-     description = "Map of attributes involved in creation of symmetric keys"
+  description = "Map of attributes involved in creation of symmetric keys"
   type = map(object({
     symmetric_key_name             = string
     symmetric_key_purpose          = string
