@@ -7,7 +7,7 @@
 #   display_name = "Service Account"
 # }
 
-resource "google_compute_instance" "test" {
+resource "google_compute_instance" "intentionally_vulnerable_test" {
   name         = "terraform-test"
   machine_type = "e2-medium"
   zone         = var.region
