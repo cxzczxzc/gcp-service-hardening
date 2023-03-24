@@ -1,9 +1,9 @@
 variable "project-name" {
-  type    = "string"
+  type    = string
   default = "service-hardening-test"
 }
 
 variable "region" {
-  type    = "string"
+  type    = string
   default = "us-central1-c"
 }
