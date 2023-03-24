@@ -16,7 +16,7 @@ Currently the host GCP project for testing deployments of templates in this repo
 ## Cloud Build Pipeline
 Within the service-hardening-test project there are 2 main triggers. One is cloud-build-terraform-image which builds a Docker image with Terraform pre-installed. This image is used in the second trigger. The repository for this trigger is [jonacto-google/cloudbuild-terraform-image](https://github.com/jonacto-google/cloudbuild-terraform-image). This trigger activates on pushes to the main branch of the repository.
 
-The second trigger is service-hardening-pr. This trigger is in charge of watching for changes to the main branch of [jonacto-google/gcp-service-hardening](https://github.com/jonacto-google/gcp-service-hardening) and running a plan/apply. This pipeline plans, applies, and destroys back-to-back. If you need to persist resources without destroying them, comment out lines 15-18 in cloudbuild.yaml. Just please remember to uncomment them again when you're done.
+The second trigger is service-hardening-pr. This trigger is in charge of watching for changes to the main branch of [cxzczxzc/gcp-service-hardening](https://github.com/cxzczxzc/gcp-service-hardening) and running a plan/apply. This pipeline plans, applies, and destroys back-to-back. If you need to persist resources without destroying them, comment out lines 15-18 in cloudbuild.yaml. Just please remember to uncomment them again when you're done.
 
 
 ## Local Development
@@ -27,7 +27,7 @@ gcloud auth application-default login
 ```
 
 - Using this command will create [Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials#personal) that Terraform can pick up and use to plan/apply without needing to manually pass in secrets.
-3. Clone the [repository](https://github.com/jonacto-google/gcp-service-hardening)
+3. Clone the [repository](https://github.com/cxzczxzc/gcp-service-hardening)
 4. cd into the local repository directory
 5. Run ``` terraform init```
 6. Before committing code to the main branch, test your working branch locally by doing some or all of the following:
