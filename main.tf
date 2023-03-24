@@ -1,7 +1,13 @@
-resource "google_container_cluster" "terraform-builder-gcs-backend" {
+resource "google_container_cluster" "test" {
   name               = "terraform-builder-gcs-backend"
-  zone               = var.region
+  location               = var.region
   initial_node_count = "3"
+
+    # Setting an empty username and password explicitly disables basic auth
+  master_auth {
+    username = ""
+    password = ""
+  }
 
   node_config {
     disk_size_gb = "10"
