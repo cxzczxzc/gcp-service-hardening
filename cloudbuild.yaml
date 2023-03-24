@@ -5,8 +5,8 @@ steps:
     args:
       [
         "init",
-        "-backend-config='project=${PROJECT_ID}'",
-        "-backend-config='bucket=${_BUCKET}'",
+        '-backend-config="project=${PROJECT_ID}"',
+        '-backend-config="bucket=${_BUCKET}"',
       ]
 
     env:
