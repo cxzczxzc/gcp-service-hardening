@@ -3,28 +3,28 @@
 steps:
   - name: "gcr.io/${PROJECT_ID}/terraform"
     args:
-      # [
-      #   "init",
-      #   "-backend-config-project=${PROJECT_ID}",
-      #   "-backend-config-bucket=${_BUCKET}",
-      # ]
-      ["init"]
+      [
+        "init",
+        "-backend-config='project=${PROJECT_ID}'",
+        "-backend-config='bucket=${_BUCKET}'",
+      ]
+
     env:
       - "TF_VAR_project-name=${PROJECT_ID}"
   - name: "gcr.io/${PROJECT_ID}/terraform"
     args: ["plan"]
     env:
       - "TF_VAR_project-name=${PROJECT_ID}"
-  - name: "gcr.io/${PROJECT_ID}/terraform"
-    args: ["apply", "-auto-approve"]
-    env:
-      - "TF_VAR_project-name=${PROJECT_ID}"
-  - name: "gcr.io/${PROJECT_ID}/terraform"
-    args: ["destroy", "-auto-approve"]
-    env:
-      - "TF_VAR_project-name=${PROJECT_ID}"
+  # - name: "gcr.io/${PROJECT_ID}/terraform"
+  #   args: ["apply", "-auto-approve"]
+  #   env:
+  #     - "TF_VAR_project-name=${PROJECT_ID}"
+  # - name: "gcr.io/${PROJECT_ID}/terraform"
+  #   args: ["destroy", "-auto-approve"]
+  #   env:
+  #     - "TF_VAR_project-name=${PROJECT_ID}"
 substitutions:
   _BUCKET: "gcp-service-hardening-tfstate" # Provide your own bucket name
   _TERRAFORM_VERSION: 1.4.2
-  _TERRAFORM_VERSION_SHA256SUM: 9f3ca33d04f5335472829d1df7785115b60176d610ae6f1583343b0a2221a931  terraform_1.4.2_linux_amd64.zip
+  _TERRAFORM_VERSION_SHA256SUM: 9f3ca33d04f5335472829d1df7785115b60176d610ae6f1583343b0a2221a931
 tags: ["cloud-builders-community"]
