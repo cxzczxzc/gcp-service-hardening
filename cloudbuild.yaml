@@ -2,11 +2,7 @@
 # $ gcloud builds submit . --config=cloudbuild.yaml --substitutions _BUCKET='<bucket name>'
 steps:
   - name: "gcr.io/${PROJECT_ID}/terraform"
-    args: [
-        "init",
-        # "-backend-config=project=${PROJECT_ID}",
-        "-backend-config=bucket=${_BUCKET}",
-      ]
+    args: ["init"]
 
     env:
       - "TF_VAR_project-name=${PROJECT_ID}"
@@ -23,7 +19,7 @@ steps:
   #   env:
   #     - "TF_VAR_project-name=${PROJECT_ID}"
 substitutions:
-  _BUCKET: "gcp-service-hardening-tfstate" # Provide your own bucket name
+  # _BUCKET: "gcp-service-hardening-tfstate"
   _TERRAFORM_VERSION: 1.4.2
   _TERRAFORM_VERSION_SHA256SUM: 9f3ca33d04f5335472829d1df7785115b60176d610ae6f1583343b0a2221a931
 tags: ["cloud-builders-community"]
