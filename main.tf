@@ -1,27 +1,28 @@
-resource "google_container_cluster" "test" {
-  name               = "terraform-builder-gcs-backend"
-  location               = var.region
-  initial_node_count = "3"
+resource "google_container_cluster" "primary" {
+  name     = "my-gke-cluster"
+  location = var.region
 
-    # Setting an empty username and password explicitly disables basic auth
-  master_auth {
-    username = ""
-    password = ""
-  }
+  # We can't create a cluster with no node pool defined, but we want to only use
+  # separately managed node pools. So we create the smallest possible default
+  # node pool and immediately delete it.
+  remove_default_node_pool = true
+  initial_node_count       = 1
+}
+
+resource "google_container_node_pool" "primary_preemptible_nodes" {
+  name       = "tf-test-node-pool"
+  location   = var.region
+  cluster    = google_container_cluster.primary.name
+  node_count = 1
 
   node_config {
-    disk_size_gb = "10"
+    preemptible  = true
+    machine_type = "e2-medium"
+
+    # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
+    # service_account = google_service_account.default.email
     oauth_scopes = [
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/devstorage.read_only",
-      "https://www.googleapis.com/auth/logging.write",
-      "https://www.googleapis.com/auth/monitoring",
+      "https://www.googleapis.com/auth/cloud-platform"
     ]
-
-    labels {
-      reason = "terraform-builder-example"
-    }
-
-    tags = ["example"]
   }
 }
