@@ -1,5 +1,6 @@
 variable "project-name" {
   type    = "string"
+  default = "service-hardening-test"
 }
 
 variable "region" {
