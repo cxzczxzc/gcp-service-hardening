@@ -1,0 +1,260 @@
+[34mterraform scan results:
+[36m
+Passed checks: 119, Failed checks: 63, Skipped checks: 0
+
+[97mCheck: CKV_GCP_114: "Ensure public access prevention is enforced on Cloud Storage bucket"
+[31m	FAILED for resource: google_storage_bucket.httpfunc-test-bucket
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:8-14
+[97mCheck: CKV_GCP_62: "Bucket should log access"
+[31m	FAILED for resource: google_storage_bucket.httpfunc-test-bucket
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:8-14
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_logging_2
+[97mCheck: CKV_GCP_78: "Ensure Cloud storage has versioning enabled"
+[31m	FAILED for resource: google_storage_bucket.httpfunc-test-bucket
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:8-14
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-cloud-storage-has-versioning-enabled
+[97mCheck: CKV_GCP_114: "Ensure public access prevention is enforced on Cloud Storage bucket"
+[31m	FAILED for resource: google_storage_bucket.pubsubfunc-test-bucket
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:46-52
+[97mCheck: CKV_GCP_62: "Bucket should log access"
+[31m	FAILED for resource: google_storage_bucket.pubsubfunc-test-bucket
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:46-52
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_logging_2
+[97mCheck: CKV_GCP_78: "Ensure Cloud storage has versioning enabled"
+[31m	FAILED for resource: google_storage_bucket.pubsubfunc-test-bucket
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:46-52
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-cloud-storage-has-versioning-enabled
+[97mCheck: CKV_GCP_83: "Ensure PubSub Topics are encrypted with Customer Supplied Encryption Keys (CSEK)"
+[31m	FAILED for resource: google_pubsub_topic.pubsubfunc-topic
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:60-63
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-pubsub-topics-are-encrypted-with-customer-supplied-encryption-keys-csek
+[97mCheck: CKV_GCP_114: "Ensure public access prevention is enforced on Cloud Storage bucket"
+[31m	FAILED for resource: google_storage_bucket.storagefunc-test-bucket
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:90-96
+[97mCheck: CKV_GCP_62: "Bucket should log access"
+[31m	FAILED for resource: google_storage_bucket.storagefunc-test-bucket
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:90-96
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_logging_2
+[97mCheck: CKV_GCP_78: "Ensure Cloud storage has versioning enabled"
+[31m	FAILED for resource: google_storage_bucket.storagefunc-test-bucket
+[35m	File: /CloudFunctions/examples/basic/provision_httpfunc/main.tf:90-96
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-cloud-storage-has-versioning-enabled
+[97mCheck: CKV_GCP_83: "Ensure PubSub Topics are encrypted with Customer Supplied Encryption Keys (CSEK)"
+[31m	FAILED for resource: google_pubsub_topic.notification
+[35m	File: /GCS/examples/basic/main.tf:30-35
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-pubsub-topics-are-encrypted-with-customer-supplied-encryption-keys-csek
+[97mCheck: CKV_K8S_21: "The default namespace should not be used"
+[31m	FAILED for resource: kubernetes_ingress_v1.example_ingress
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:1-29
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_20
+[97mCheck: CKV_K8S_21: "The default namespace should not be used"
+[31m	FAILED for resource: kubernetes_service_v1.hostname_service
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:31-51
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_20
+[97mCheck: CKV_K8S_8: "Liveness Probe Should be Configured"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_7
+[97mCheck: CKV_K8S_13: "Memory requests should be set"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_12
+[97mCheck: CKV_K8S_15: "Image Pull Policy should be Always"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_14
+[97mCheck: CKV_K8S_12: "Memory Limits should be set"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_11
+[97mCheck: CKV_K8S_10: "CPU requests should be set"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_9
+[97mCheck: CKV_K8S_9: "Readiness Probe Should be Configured"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_8
+[97mCheck: CKV_K8S_28: "Minimize the admission of containers with the NET_RAW capability"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_27
+[97mCheck: CKV_K8S_29: "Apply security context to your pods, deployments and daemon_sets"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_28
+[97mCheck: CKV_K8S_30: "Apply security context to your pods and containers"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_28
+[97mCheck: CKV_K8S_21: "The default namespace should not be used"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_20
+[97mCheck: CKV_K8S_43: "Image should use digest"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_39
+[97mCheck: CKV_K8S_11: "CPU Limits should be set"
+[31m	FAILED for resource: kubernetes_deployment.hostname_server
+[35m	File: /GKE/examples/basic/k8s-ingress.tf:53-90
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_k8s_10
+[97mCheck: CKV_GCP_42: "Ensure that Service Account has no Admin privileges"
+[31m	FAILED for resource: module.gcp_delegated_role_grant.google_project_iam_member.delegated_role_grants
+[35m	File: /IAM/DRG/modules/gcp_iam_delegated_role_grants/main.tf:40-50
+[35m	Calling File: /IAM/DRG/main.tf:14-27
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_iam_4
+[97mCheck: CKV_GCP_49: "Ensure roles do not impersonate or manage Service Accounts used at project level"
+[31m	FAILED for resource: module.gcp_delegated_role_grant.google_project_iam_member.delegated_role_grants
+[35m	File: /IAM/DRG/modules/gcp_iam_delegated_role_grants/main.tf:40-50
+[35m	Calling File: /IAM/DRG/main.tf:14-27
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_iam_10
+[97mCheck: CKV_GCP_43: "Ensure KMS encryption keys are rotated within a period of 90 days"
+[31m	FAILED for resource: module.kms.google_kms_crypto_key.asymmetric_key
+[35m	File: /KMS/main.tf:56-73
+[35m	Calling File: /KMS/examples/basic/main.tf:1-24
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_general_4
+[97mCheck: CKV_GCP_43: "Ensure KMS encryption keys are rotated within a period of 90 days"
+[31m	FAILED for resource: module.kms.google_kms_crypto_key.symmetric_key
+[35m	File: /KMS/main.tf:75-90
+[35m	Calling File: /KMS/examples/basic/main.tf:1-24
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_general_4
+[97mCheck: CKV_GCP_43: "Ensure KMS encryption keys are rotated within a period of 90 days"
+[31m	FAILED for resource: module.kms.google_kms_crypto_key.symmetric_key_with_rotation_period
+[35m	File: /KMS/main.tf:94-110
+[35m	Calling File: /KMS/examples/basic/main.tf:1-24
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_general_4
+[97mCheck: CKV_GCP_74: "Ensure that private_ip_google_access is enabled for Subnet"
+[31m	FAILED for resource: google_compute_subnetwork.default
+[35m	File: /LoadBalancers/GlobaHTTPlLB/examples/basic/main.tf:8-14
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-subnet-has-a-private-ip-google-access
+[97mCheck: CKV_GCP_26: "Ensure that VPC Flow Logs is enabled for every subnet in a VPC Network"
+[31m	FAILED for resource: google_compute_subnetwork.default
+[35m	File: /LoadBalancers/GlobaHTTPlLB/examples/basic/main.tf:8-14
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_logging_1
+[97mCheck: CKV_GCP_76: "Ensure that Private google access is enabled for IPV6"
+[31m	FAILED for resource: google_compute_subnetwork.default
+[35m	File: /LoadBalancers/GlobaHTTPlLB/examples/basic/main.tf:8-14
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-private-google-access-is-enabled-for-ipv6
+[97mCheck: CKV_GCP_32: "Ensure 'Block Project-wide SSH keys' is enabled for VM instances"
+[31m	FAILED for resource: google_compute_instance_template.default
+[35m	File: /LoadBalancers/GlobaHTTPlLB/examples/basic/main.tf:17-32
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_networking_8
+[97mCheck: CKV_GCP_30: "Ensure that instances are not configured to use the default service account"
+[31m	FAILED for resource: google_compute_instance_template.default
+[35m	File: /LoadBalancers/GlobaHTTPlLB/examples/basic/main.tf:17-32
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_iam_1
+[97mCheck: CKV_GCP_39: "Ensure Compute instances are launched with Shielded VM enabled"
+[31m	FAILED for resource: google_compute_instance_template.default
+[35m	File: /LoadBalancers/GlobaHTTPlLB/examples/basic/main.tf:17-32
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_general_y
+[97mCheck: CKV_GCP_4: "Ensure no HTTPS or SSL proxy load balancers permit SSL policies with weak cipher suites"
+[31m	FAILED for resource: module.gce-lb-http.google_compute_ssl_policy.dnb-ssl-policy
+[35m	File: /LoadBalancers/GlobaHTTPlLB/main.tf:32-38
+[35m	Calling File: /LoadBalancers/GlobaHTTPlLB/examples/basic/main.tf:57-96
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_networking_3
+[97mCheck: CKV_GCP_74: "Ensure that private_ip_google_access is enabled for Subnet"
+[31m	FAILED for resource: google_compute_subnetwork.default
+[35m	File: /LoadBalancers/InternalHTTPLB/examples/basic/main.tf:14-23
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-subnet-has-a-private-ip-google-access
+[97mCheck: CKV_GCP_26: "Ensure that VPC Flow Logs is enabled for every subnet in a VPC Network"
+[31m	FAILED for resource: google_compute_subnetwork.default
+[35m	File: /LoadBalancers/InternalHTTPLB/examples/basic/main.tf:14-23
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_logging_1
+[97mCheck: CKV_GCP_76: "Ensure that Private google access is enabled for IPV6"
+[31m	FAILED for resource: google_compute_subnetwork.default
+[35m	File: /LoadBalancers/InternalHTTPLB/examples/basic/main.tf:14-23
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-private-google-access-is-enabled-for-ipv6
+[97mCheck: CKV_GCP_74: "Ensure that private_ip_google_access is enabled for Subnet"
+[31m	FAILED for resource: google_compute_subnetwork.proxy-net
+[35m	File: /LoadBalancers/InternalHTTPLB/examples/basic/main.tf:25-33
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-subnet-has-a-private-ip-google-access
+[97mCheck: CKV_GCP_76: "Ensure that Private google access is enabled for IPV6"
+[31m	FAILED for resource: google_compute_subnetwork.proxy-net
+[35m	File: /LoadBalancers/InternalHTTPLB/examples/basic/main.tf:25-33
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-private-google-access-is-enabled-for-ipv6
+[97mCheck: CKV_GCP_32: "Ensure 'Block Project-wide SSH keys' is enabled for VM instances"
+[31m	FAILED for resource: google_compute_instance_template.default
+[35m	File: /LoadBalancers/InternalHTTPLB/examples/basic/main.tf:36-51
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_networking_8
+[97mCheck: CKV_GCP_30: "Ensure that instances are not configured to use the default service account"
+[31m	FAILED for resource: google_compute_instance_template.default
+[35m	File: /LoadBalancers/InternalHTTPLB/examples/basic/main.tf:36-51
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_iam_1
+[97mCheck: CKV_GCP_39: "Ensure Compute instances are launched with Shielded VM enabled"
+[31m	FAILED for resource: google_compute_instance_template.default
+[35m	File: /LoadBalancers/InternalHTTPLB/examples/basic/main.tf:36-51
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_general_y
+[97mCheck: CKV_GCP_74: "Ensure that private_ip_google_access is enabled for Subnet"
+[31m	FAILED for resource: google_compute_subnetwork.default
+[35m	File: /LoadBalancers/InternalTCPUDPLB/examples/basic/main.tf:14-20
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-subnet-has-a-private-ip-google-access
+[97mCheck: CKV_GCP_26: "Ensure that VPC Flow Logs is enabled for every subnet in a VPC Network"
+[31m	FAILED for resource: google_compute_subnetwork.default
+[35m	File: /LoadBalancers/InternalTCPUDPLB/examples/basic/main.tf:14-20
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_logging_1
+[97mCheck: CKV_GCP_76: "Ensure that Private google access is enabled for IPV6"
+[31m	FAILED for resource: google_compute_subnetwork.default
+[35m	File: /LoadBalancers/InternalTCPUDPLB/examples/basic/main.tf:14-20
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-private-google-access-is-enabled-for-ipv6
+[97mCheck: CKV_GCP_32: "Ensure 'Block Project-wide SSH keys' is enabled for VM instances"
+[31m	FAILED for resource: google_compute_instance_template.default
+[35m	File: /LoadBalancers/InternalTCPUDPLB/examples/basic/main.tf:23-38
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_networking_8
+[97mCheck: CKV_GCP_30: "Ensure that instances are not configured to use the default service account"
+[31m	FAILED for resource: google_compute_instance_template.default
+[35m	File: /LoadBalancers/InternalTCPUDPLB/examples/basic/main.tf:23-38
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_iam_1
+[97mCheck: CKV_GCP_39: "Ensure Compute instances are launched with Shielded VM enabled"
+[31m	FAILED for resource: google_compute_instance_template.default
+[35m	File: /LoadBalancers/InternalTCPUDPLB/examples/basic/main.tf:23-38
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_general_y
+[97mCheck: CKV_GCP_83: "Ensure PubSub Topics are encrypted with Customer Supplied Encryption Keys (CSEK)"
+[31m	FAILED for resource: module.logs-admin.google_pubsub_topic.cribl_pubsub_topic
+[35m	File: /Logging/terraform/modules/pubsub4cribl/main.tf:3-6
+[35m	Calling File: /Logging/terraform/main.tf:32-39
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-pubsub-topics-are-encrypted-with-customer-supplied-encryption-keys-csek
+[97mCheck: CKV_GCP_83: "Ensure PubSub Topics are encrypted with Customer Supplied Encryption Keys (CSEK)"
+[31m	FAILED for resource: module.logs-network.google_pubsub_topic.cribl_pubsub_topic
+[35m	File: /Logging/terraform/modules/pubsub4cribl/main.tf:3-6
+[35m	Calling File: /Logging/terraform/main.tf:41-48
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-pubsub-topics-are-encrypted-with-customer-supplied-encryption-keys-csek
+[97mCheck: CKV_GCP_83: "Ensure PubSub Topics are encrypted with Customer Supplied Encryption Keys (CSEK)"
+[31m	FAILED for resource: module.logs-nonprod.google_pubsub_topic.cribl_pubsub_topic
+[35m	File: /Logging/terraform/modules/pubsub4cribl/main.tf:3-6
+[35m	Calling File: /Logging/terraform/main.tf:50-57
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-pubsub-topics-are-encrypted-with-customer-supplied-encryption-keys-csek
+[97mCheck: CKV_GCP_83: "Ensure PubSub Topics are encrypted with Customer Supplied Encryption Keys (CSEK)"
+[31m	FAILED for resource: module.logs-prod.google_pubsub_topic.cribl_pubsub_topic
+[35m	File: /Logging/terraform/modules/pubsub4cribl/main.tf:3-6
+[35m	Calling File: /Logging/terraform/main.tf:59-66
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/ensure-gcp-pubsub-topics-are-encrypted-with-customer-supplied-encryption-keys-csek
+[97mCheck: CKV_GCP_32: "Ensure 'Block Project-wide SSH keys' is enabled for VM instances"
+[31m	FAILED for resource: google_compute_instance.test
+[35m	File: /main.tf:10-50
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_networking_8
+[97mCheck: CKV_GCP_38: "Ensure VM disks for critical VMs are encrypted with Customer Supplied Encryption Keys (CSEK)"
+[31m	FAILED for resource: google_compute_instance.test
+[35m	File: /main.tf:10-50
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/encrypt-boot-disks-for-instances-with-cseks
+[97mCheck: CKV_GCP_30: "Ensure that instances are not configured to use the default service account"
+[31m	FAILED for resource: google_compute_instance.test
+[35m	File: /main.tf:10-50
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_iam_1
+[97mCheck: CKV_GCP_39: "Ensure Compute instances are launched with Shielded VM enabled"
+[31m	FAILED for resource: google_compute_instance.test
+[35m	File: /main.tf:10-50
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_general_y
+[97mCheck: CKV_GCP_40: "Ensure that Compute instances do not have public IP addresses"
+[31m	FAILED for resource: google_compute_instance.test
+[35m	File: /main.tf:10-50
+	Guide: [1m[4m[34mhttps://docs.bridgecrew.io/docs/bc_gcp_public_2
+[97mCheck: CKV2_GCP_18: "Ensure GCP network defines a firewall and does not use the default firewall"
+[31m	FAILED for resource: google_compute_network.default
+[35m	File: /LoadBalancers/GlobaHTTPlLB/examples/basic/main.tf:2-6
+[97mCheck: CKV2_GCP_18: "Ensure GCP network defines a firewall and does not use the default firewall"
+[31m	FAILED for resource: google_compute_network.default
+[35m	File: /LoadBalancers/InternalHTTPLB/examples/basic/main.tf:8-12
+[97mCheck: CKV2_GCP_18: "Ensure GCP network defines a firewall and does not use the default firewall"
+[31m	FAILED for resource: google_compute_network.default
+[35m	File: /LoadBalancers/InternalTCPUDPLB/examples/basic/main.tf:8-12
