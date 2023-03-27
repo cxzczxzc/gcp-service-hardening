@@ -1,0 +1,4 @@
+.terraform*
+external-modules
+tfplan*
+terraform.tfstate*

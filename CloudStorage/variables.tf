@@ -18,7 +18,7 @@ variable "project_id" {
 variable "location" {
   description = "The location of the bucket."
   type        = string
-  default     = "us-east4"
+  default     = "US"
 }
 
 variable "storage_class" {

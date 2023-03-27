@@ -27,7 +27,7 @@ module "simple_bucket" {
   lifecycle_rules   = var.lifecycle_rules
   iam_members       = var.iam_members
   log_bucket        = "central_logging"
-  log_object_prefix = "${var.project_id}/${local.module_name}/lb"  
+  log_object_prefix = "${var.project_id}/${local.module_name}/lb"
   website           = var.website
 
   depends_on = [
