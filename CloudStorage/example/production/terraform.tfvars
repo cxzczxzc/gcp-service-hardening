@@ -1,11 +1,5 @@
-name = "mybucket"
-environment   = "prod"
-storage_class = "MULTI_REGIONAL"
-force_destroy = true
-project_id    = "kcc-master"
-bucket_policy_only = true
-log_bucket = "central_logging"
-log_object_prefix = "test"
-public_access_prevention = "enforced"
-versioning = true
-location = "US"
+name        = "mybucket"
+environment = "prod"
+project_id  = "kcc-master"
+log_bucket  = "central_logging"
+location    = "US"

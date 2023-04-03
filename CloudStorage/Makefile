@@ -1,3 +1,4 @@
+.ONESHELL:
 PROJECT_DIR = ${CURDIR}
 
 fmt:
@@ -6,13 +7,13 @@ fmt:
 init:
 	@echo
 	@echo "Running Terraform init..."
-	terraform init
+	cd example/production && terraform init
 plan:
 	@echo
 	@echo "Running Terraform Plan and Converting it to json..."
-	terraform plan --out tfplan.binary
-	terraform show -json tfplan.binary | jq '.' > tfplan.json
-	@echo "Terraform Plan has been generated to `pwd`/tfplan.json."
+	cd example/production && terraform plan --out tfplan.binary
+	cd example/production && terraform show -json tfplan.binary | jq '.' > tfplan.json
+	@echo "Terraform Plan has been generated to `pwd`/example/production/tfplan.json."
 check:
 	@echo
 	@echo "Starting Terraform Check from Checkov..."
@@ -23,17 +24,17 @@ check:
 check-tfplan:
 	@echo
 	@echo "Starting Terraform Plan Check from Checkov..."
-	checkov --framework terraform_plan -f tfplan.json --skip-check CKV_GCP_114
+	checkov --framework terraform_plan -f example/production/tfplan.json --skip-check CKV_GCP_114
 	@echo "Terraform Plan Checks have been Completed."
 test: fmt init plan check check-tfplan
 test-apply: test
 	@echo
 	@echo "Running Terraform Apply after testing..."
 # Not setting it to -auto-approve for now
-	terraform apply "tfplan.binary"
+	cd example/production && terraform apply "tfplan.binary"
 clean:
 	@echo
 	@echo "Destroying Infrastructure Created by Make..."
-	terraform destroy -auto-approve
+	cd example/production && terraform destroy -auto-approve
 
 .PHONY: *

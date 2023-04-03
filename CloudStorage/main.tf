@@ -16,6 +16,9 @@ resource "google_storage_bucket" "bucket" {
   versioning {
     enabled = var.versioning
   }
+  autoclass {
+    enabled = var.autoclass
+  }
 
   dynamic "retention_policy" {
     for_each = var.retention_policy == null ? [] : [var.retention_policy]

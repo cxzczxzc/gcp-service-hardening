@@ -16,7 +16,17 @@ variable "location" {
 variable "storage_class" {
   description = "The Storage Class of the new bucket."
   type        = string
-  default     = null
+  default     = "MULTI_REGIONAL"
+  validation {
+    condition     = contains(["STANDARD", "MULTI_REGIONAL", "REGIONAL", "NEARLINE", "COLDLINE", "ARCHIVE"], var.storage_class)
+    error_message = "Validation: storage class must be one of: STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE."
+  }
+}
+
+variable "autoclass" {
+  description = "autoclass automatically transitions objects in your bucket to appropriate storage classes."
+  type        = bool
+  default     = false
 }
 
 variable "labels" {
