@@ -23,6 +23,11 @@ output "retention_policy" {
   value       = google_storage_bucket.bucket.retention_policy
 }
 
+output "not_public" {
+  description = "The created storage bucket's public access prevention"
+  value       = google_storage_bucket.bucket.public_access_prevention
+}
+
 output "storage_notification" {
   description = "The created storage notification self_link for the bucket"
   value = {

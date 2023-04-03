@@ -18,9 +18,14 @@ Test module locally:
 make test
 ```
 
-Apply configuration to currently configured/authenticated AWS ENV:
+Apply configuration to currently configured/authenticated GCP ENV:
 ```
 make test-apply
+```
+
+Destroy configuration from currently configured/authenticated GCP ENV:
+```
+make clean
 ```
 
 ## Module Documentation
@@ -36,6 +41,7 @@ make test-apply
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.0 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | >= 4.15, <5.0 |
+| <a name="requirement_checkov"></a> [checkov](#requirement\_checkov) | >= 2.3.124 |
 
 ## Providers
 
@@ -44,12 +50,6 @@ make test-apply
 | <a name="provider_google"></a> [google](#provider\_google) | >= 4.15, <5.0 |
 | <a name="provider_null"></a> [null](#provider\_null) | n/a |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
-
-## Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_simple_bucket"></a> [simple\_bucket](#module\_simple\_bucket) | terraform-google-modules/cloud-storage/google//modules/simple_bucket | ~> 3.3 |
 
 ## Resources
 
@@ -92,4 +92,5 @@ make test-apply
 | <a name="output_storage_class"></a> [storage\_class](#output\_storage\_class) | The created storage bucket's storage class |
 | <a name="output_storage_notification"></a> [storage\_notification](#output\_storage\_notification) | The created storage notification self\_link for the bucket |
 | <a name="output_versioning"></a> [versioning](#output\_versioning) | The created storage bucket's versioning status |
+| <a name="output_not_public"></a> [not\_public](#output\_not\_public) | The created storage bucket's public access prevention |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
