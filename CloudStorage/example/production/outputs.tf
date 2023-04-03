@@ -1,7 +1,3 @@
-output "region" {
-  value = var.region
-}
-
 output "bucket" {
   description = "The created storage bucket"
   value       = module.bucket_storage_class_validations.bucket.name

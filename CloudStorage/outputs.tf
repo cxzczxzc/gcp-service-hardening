@@ -1,26 +1,26 @@
 output "bucket" {
   description = "The created storage bucket"
-  value       = module.simple_bucket.bucket
+  value       = google_storage_bucket.bucket
 }
 
 output "versioning" {
   description = "The created storage bucket's versioning status"
-  value       = module.simple_bucket.bucket.versioning
+  value       = google_storage_bucket.bucket.versioning
 }
 
 output "encryption" {
   description = "The created storage bucket's access level"
-  value       = module.simple_bucket.bucket.uniform_bucket_level_access
+  value       = google_storage_bucket.bucket.uniform_bucket_level_access
 }
 
 output "storage_class" {
   description = "The created storage bucket's storage class"
-  value       = module.simple_bucket.bucket.storage_class
+  value       = google_storage_bucket.bucket.storage_class
 }
 
 output "retention_policy" {
   description = "The created storage bucket's retention policy"
-  value       = module.simple_bucket.bucket.retention_policy
+  value       = google_storage_bucket.bucket.retention_policy
 }
 
 output "storage_notification" {
