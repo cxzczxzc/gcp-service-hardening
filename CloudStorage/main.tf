@@ -20,7 +20,7 @@ module "simple_bucket" {
   bucket_policy_only = true
   versioning         = true
   force_destroy      = var.environment != "prod" ? var.force_destroy : false
-  retention_policy   = null
+  retention_policy   = var.retention_policy
   cors               = var.cors
   encryption         = var.encryption # always enabled, chooses between user managed key and google managed key only
 
