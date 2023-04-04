@@ -1,0 +1,13 @@
+{
+  "baseBranch": "main",
+  "shipit": {
+    "noChangelog": true,
+  },
+  "plugins": [
+    "released",
+    "git-tag",
+    "first-time-contributor",
+    ["conventional-commits", { "preset": "conventionalcommits", "defaultReleaseType": "patch" }]
+  ],
+  "author": "github-actions[bot] <github-actions[bot]@users.noreply.github.com>",
+}

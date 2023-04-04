@@ -1,0 +1,12 @@
+name: Release Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    uses: dnb-main/devx-github-org-workflows/.github/workflows/release-publish.yaml@2.0.0
+    secrets: inherit
