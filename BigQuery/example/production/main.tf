@@ -1,4 +1,4 @@
-module "bucket_storage_class_validations" {
+module "bigquery_validations" {
   source = "../.."
 
   name        = var.name

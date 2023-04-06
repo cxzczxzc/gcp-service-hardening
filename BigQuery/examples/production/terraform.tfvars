@@ -1,5 +1,0 @@
-name        = "mybucket"
-environment = "prod"
-project_id  = "kcc-master"
-log_bucket  = "central_logging"
-location    = "US"
