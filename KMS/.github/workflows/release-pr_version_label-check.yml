@@ -1,0 +1,18 @@
+name: Release Pull Request Version Label
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - edited
+      - labeled
+      - unlabeled
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  release:
+    uses: dnb-main/devx-github-org-workflows/.github/workflows/release-pr_version_label-check.yaml@2.0.0
+    secrets: inherit
+
+

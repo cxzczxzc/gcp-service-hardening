@@ -1,0 +1,33 @@
+name: Generate terraform docs
+on:
+  - pull_request
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: dnb-public-forks/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+    - uses: dnb-public-forks/setup-terraform@v1
+
+    - name: Terraform fmt
+      id: fmt
+      run: terraform fmt -recursive
+
+    - name: readme title match repo name
+      id: readme-title-match-repo-name
+      run: sed -i "1s/.*/\# ${{ github.event.repository.name }}/" README.md
+
+    - name: terraform docs
+      id: terraform-docs
+      uses: dnb-public-forks/gh-actions@b70f26cbb942d355a1ec99d3aa5707a35e838b81
+      with:
+        working-dir: .
+        output-file: README.md
+        output-method: inject
+        git-push: true
+        template: |-
+          <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+          {{ .Content }}
+          <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

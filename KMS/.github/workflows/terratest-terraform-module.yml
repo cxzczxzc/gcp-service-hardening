@@ -1,0 +1,28 @@
+name: Test Terraform Module
+on:
+  - pull_request
+  - workflow_dispatch
+
+jobs:
+  terratest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: dnb-public-forks/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.merge_commit_sha }}
+    - uses: dnb-public-forks/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ secrets.TERRATEST_TF_API_TOKEN }}
+        terraform_wrapper: false
+    - uses: actions/setup-go@v3
+      with:
+        go-version: '>=1.17.0'
+    - uses: actions/cache@v3
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/test/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+    - name: terratest
+      id: test
+      run: make test-apply
