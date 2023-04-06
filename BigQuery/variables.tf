@@ -6,11 +6,13 @@ variable "dataset_id" {
 variable "dataset_name" {
   description = "Friendly name for the dataset being provisioned."
   type        = string
+  default     = null
 }
 
 variable "description" {
   description = "Dataset description."
   type        = string
+  default     = null
 }
 
 variable "location" {
@@ -19,9 +21,39 @@ variable "location" {
   default     = "US"
 }
 
+variable "delete_contents_on_destroy" {
+  description = "(Optional) If set to true, delete all the tables in the dataset when destroying the resource; otherwise, destroying the resource will fail if tables are present."
+  type        = bool
+  default     = null
+}
+
+variable "deletion_protection" {
+  description = "Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail"
+  type        = bool
+  default     = false
+}
+
+variable "default_table_expiration_ms" {
+  description = "TTL of tables using the dataset in MS"
+  type        = number
+  default     = null
+}
+
+variable "max_time_travel_hours" {
+  description = "Defines the time travel window in hours"
+  type        = number
+  default     = null
+}
+
 variable "project_id" {
   description = "Project where the dataset and table are created"
   type        = string
+}
+
+variable "encryption_key" {
+  description = "Default encryption key to apply to the dataset. Defaults to null (Google-managed)."
+  type        = string
+  default     = null
 }
 
 variable "dataset_labels" {
@@ -29,25 +61,6 @@ variable "dataset_labels" {
   type        = map(string)
   default     = {}
 }
-
-variable "delete_contents_on_destroy" {
-  description = "(Optional) If set to true, delete all the tables in the dataset when destroying the resource; otherwise, destroying the resource will fail if tables are present."
-  type        = bool
-  default     = null
-}
-
-variable "log_sink_writer_identity" {
-  description = "The service account that logging uses to write log entries to the destination. (This is available as an output coming from the root module)."
-  type        = string
-  default     = "test"
-}
-
-variable "local_value" {
-  description = "To pass true or false value whether to have sink destination or not"
-  type        = bool
-  default     = false
-}
-
 
 # Format: list(objects)
 # domain: A domain to grant access to.
@@ -65,11 +78,32 @@ variable "access" {
   }]
 }
 
+variable "table_access" {
+  description = "An array of objects that define table access for one or more entities."
+  type        = any
+
+  default = [{
+    role          = "roles/bigquery.dataOwner"
+    special_group = "projectOwners"
+  }]
+}
+
+variable "view_access" {
+  description = "An array of objects that define view access for one or more entities."
+  type        = any
+
+  default = [{
+    role          = "roles/bigquery.dataOwner"
+    special_group = "projectOwners"
+  }]
+}
+
 variable "tables" {
-  description = "A list of objects which include table_id, schema, clustering, time_partitioning, range_partitioning, expiration_time and labels."
+  description = "A list of objects which include table_id, table_name, schema, clustering, time_partitioning, range_partitioning, expiration_time and labels."
   default     = []
   type = list(object({
     table_id   = string,
+    table_name = optional(string),
     schema     = string,
     clustering = list(string),
     time_partitioning = object({
