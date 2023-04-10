@@ -68,17 +68,3 @@ resource "google_kms_crypto_key_iam_binding" "encrypters" {
   crypto_key_id = local.keys_by_name[element(var.set_encrypters_for, count.index)]
   members       = compact(split(",", var.encrypters[count.index]))
 }
-
-# resource "null_resource" "crypto_key_type_validation" {
-
-#   triggers = {
-#     always_run = "${timestamp()}"
-#   }
-
-#   lifecycle {
-#     precondition {
-#       condition     = contains(["ASYMMETRIC_SIGN", "ASYMMETRIC_DECRYPT"], var.purpose) ? var.key_rotation_period = null : true
-#       error_message = "Validation: For Asymmetric Keys Rotation should be manual."
-#     }
-#   }
-# }
