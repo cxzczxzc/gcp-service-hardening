@@ -1,9 +1,7 @@
 module "bigquery_validations" {
   source = "../.."
 
-  name        = var.name
+  dataset_id  = var.dataset_id
   project_id  = var.project_id
   location    = var.location
-  environment = var.environment
-  log_bucket  = var.log_bucket
 }
