@@ -90,23 +90,18 @@ resource "google_bigquery_table" "main" {
 }
 
 resource "google_bigquery_table_iam_binding" "main_table_binding" {
-  project    = google_bigquery_table.main.project_id
-  dataset_id = google_bigquery_table.main.dataset_id
-  table_id   = google_bigquery_table.main.table_id
+  project    = var.project_id
+  dataset_id = var.dataset_id
 
-  dynamic "table_access" {
-    for_each = var.table_access
-    content {
-      # BigQuery API converts IAM to primitive roles in its backend.
-      # This causes Terraform to show a diff on every plan that uses IAM equivalent roles.
-      # Thus, do the conversion between IAM to primitive role here to prevent the diff.
-      role           = lookup(local.iam_to_primitive, table_access.value.role, table_access.value.role)
-      domain         = lookup(table_access.value, "domain", "")
-      group_by_email = lookup(table_access.value, "group_by_email", "")
-      user_by_email  = lookup(table_access.value, "user_by_email", "")
-      special_group  = lookup(table_access.value, "special_group", "")
-    }
-  }
+  for_each   = local.tables
+  table_id   = google_bigquery_table.main[each.key].table_id
+  role = "roles/bigquery.dataViewer"
+  /* role           = lookup(local.iam_to_primitive, table_access.value.role, table_access.value.role)
+  domain         = lookup(table_access.value, "domain", "")
+  group_by_email = lookup(table_access.value, "group_by_email", "")
+  user_by_email  = lookup(table_access.value, "user_by_email", "")
+  special_group  = lookup(table_access.value, "special_group", "") */
+  members = ["user:aroonav@google.com",]
 }
 
 resource "google_bigquery_table" "view" {
@@ -127,26 +122,6 @@ resource "google_bigquery_table" "view" {
     ignore_changes = [
       encryption_configuration # managed by google_bigquery_dataset.main.default_encryption_configuration
     ]
-  }
-}
-
-resource "google_bigquery_table_iam_binding" "view_binding" {
-  project    = google_bigquery_table.view.project_id
-  dataset_id = google_bigquery_table.view.dataset_id
-  table_id   = google_bigquery_table.view.table_id
-
-  dynamic "view_access" {
-    for_each = var.view_access
-    content {
-      # BigQuery API converts IAM to primitive roles in its backend.
-      # This causes Terraform to show a diff on every plan that uses IAM equivalent roles.
-      # Thus, do the conversion between IAM to primitive role here to prevent the diff.
-      role           = lookup(local.iam_to_primitive, view_access.value.role, view_access.value.role)
-      domain         = lookup(view_access.value, "domain", "")
-      group_by_email = lookup(view_access.value, "group_by_email", "")
-      user_by_email  = lookup(view_access.value, "user_by_email", "")
-      special_group  = lookup(view_access.value, "special_group", "")
-    }
   }
 }
 
@@ -196,8 +171,9 @@ resource "google_bigquery_table" "materialized_view" {
   }
 }
 
+/*
 resource "google_bigquery_table_iam_binding" "materialized_view_binding" {
-  project    = google_bigquery_table.materialized_view.project_id
+ project    = google_bigquery_table.materialized_view.project_id
   dataset_id = google_bigquery_table.materialized_view.dataset_id
   table_id   = google_bigquery_table.materialized_view.table_id
 
@@ -212,6 +188,7 @@ resource "google_bigquery_table_iam_binding" "materialized_view_binding" {
     }
   }
 }
+*/
 
 resource "google_bigquery_table" "external_table" {
   for_each            = local.external_tables
@@ -268,6 +245,7 @@ resource "google_bigquery_table" "external_table" {
   }
 }
 
+/*
 resource "google_bigquery_table_iam_binding" "external_table_binding" {
   project    = google_bigquery_table.external_table.project_id
   dataset_id = google_bigquery_table.external_table.dataset_id
@@ -284,6 +262,7 @@ resource "google_bigquery_table_iam_binding" "external_table_binding" {
     }
   }
 }
+*/
 
 resource "google_bigquery_routine" "routine" {
   for_each        = local.routines
