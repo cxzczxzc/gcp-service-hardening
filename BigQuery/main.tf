@@ -93,15 +93,13 @@ resource "google_bigquery_table_iam_binding" "main_table_binding" {
   project    = var.project_id
   dataset_id = var.dataset_id
 
-  for_each   = local.tables
+  for_each   = local.tables {
   table_id   = google_bigquery_table.main[each.key].table_id
-  role = "roles/bigquery.dataViewer"
-  /* role           = lookup(local.iam_to_primitive, table_access.value.role, table_access.value.role)
-  domain         = lookup(table_access.value, "domain", "")
-  group_by_email = lookup(table_access.value, "group_by_email", "")
-  user_by_email  = lookup(table_access.value, "user_by_email", "")
-  special_group  = lookup(table_access.value, "special_group", "") */
+  }
+  for_each   = var.table_id {
+  role = lookup(local.iam_to_primitive, table_access.value.role, table_access.value.role)
   members = ["user:aroonav@google.com",]
+  }
 }
 
 resource "google_bigquery_table" "view" {
