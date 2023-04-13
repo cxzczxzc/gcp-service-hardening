@@ -81,11 +81,6 @@ variable "access" {
 variable "table_access" {
   description = "An array of objects that define table access for one or more entities."
   type        = any
-
-  default = [{
-    role          = "roles/bigquery.dataOwner"
-    special_group = "projectOwners"
-  }]
 }
 
 variable "view_access" {
