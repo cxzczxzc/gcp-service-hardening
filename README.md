@@ -69,4 +69,5 @@ We plan on eventually moving away from Checkov and use [Policy Validation](https
 GCloud SDK: https://cloud.google.com/sdk/docs/install
 
 Terraform: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+
 Checkov: https://www.checkov.io/2.Basics/Installing%20Checkov.html
