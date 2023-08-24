@@ -2,19 +2,21 @@
 ## Summary
 This repository provides a collection of example Terraform templates for common GCP resources with security baked in.
 
-The purpose of this collection is to provide 70-80% of the security configuration that you might need to do for each resource type for most security-concious customers. This helps you minimize the amount of research you need to do every time that you're creating new resources.
+These modules build a secure foundation for spinning up GCP resources securely. These terraform modules are written with alignment to Google Best Practices, and industry standards such as CIS Benchmarks, where applicable. 
 
 Each repository contains documentation in the form of a README.md file that specifies what security frameworks, standards, and benchmarks were applied to the templates.
 
+**Caveat:** Security is ever evolving, and every company's compliance and data handling requirements are different. These modules serve as a foundation for furhter building up the security of your GCP organization as needs arise. 
+
 
 ## Test GCP Project
-Currently the host GCP project for testing deployments of templates in this repository is jonacto@'s "service-hardening-test" project.
+Currently the host GCP project for testing deployments of templates in this repository is `service-hardening-test` project.
 
 
 ## Cloud Build Pipeline
 
 ## Triggers
-Within the service-hardening-test project there are 2 main triggers. 
+Within the `service-hardening-test` project there are two triggers: 
 1. First is the `cloud-build-terraform-image` which builds a Docker image with Terraform pre-installed. This image is used in the second trigger. The repository for this trigger is [jonacto-google/cloudbuild-terraform-image](https://github.com/jonacto-google/cloudbuild-terraform-image). This trigger activates on pushes to the main branch of the repository.
 
 2. The second trigger is `service-hardening-pr`. This trigger is in charge of watching for changes to the main branch of [cxzczxzc/gcp-service-hardening](https://github.com/cxzczxzc/gcp-service-hardening) and running a plan/apply. This pipeline plans, applies, and destroys back-to-back. If you need to persist resources without destroying them, comment out lines 15-18 in cloudbuild.yaml. Just please remember to uncomment them again when you're done.
