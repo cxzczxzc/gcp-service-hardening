@@ -1,9 +1,9 @@
 terraform {
   backend "remote" {
-    organization = "dnb-core"
+    organization = "<ORG_NAME>"
 
     workspaces {
-      name = "terraform-google-dnb_gcp_compute_engine_linux"
+      name = "<TFC_WORKSPACE_NAME>"
     }
   }
 }
