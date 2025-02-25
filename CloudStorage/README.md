@@ -5,8 +5,6 @@ The repo name should follow naming convention:
 
         terraform-<PROVIDER>-dnb_<servicename>
 
-e.g.
-        terraform-google-dnb_gcp_cloud_storage
 
 And provide a short description of the purpose here. The module will need to be submitted to the DevX Platform team for peer-review via a pull-request, and then they can add it to our dnb-core TFC module registry.
 
