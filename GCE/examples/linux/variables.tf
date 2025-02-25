@@ -16,7 +16,6 @@ variable "instance_tags" {
 
 variable "devx_url" {
   type    = string
-  default = "https://devx-portal.inf.dnb.net/terraform"
 }
 
 variable "org" {
@@ -47,7 +46,6 @@ variable "drn" {
 
 variable "cmdb_url" {
   type    = string
-  default = "https://cmdbportal.inf.dnb.net/api/public/applications"
 }
 
 variable "additional_disks" {
